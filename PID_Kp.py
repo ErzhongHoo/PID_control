@@ -1,14 +1,16 @@
 import matplotlib.pyplot as plt
 
+# 有一个水缸,最终控制目的:把水池里的水维持在1m的位置
 
+target=1
 h = 0.2    # 初始水位高度
-kp = 0.5
+kp = 0.5    #这里单纯只使用比例算法,设置的误差系数
 z = []
 
 for t in range(100):	
-    if h <= 1:    # 目标高度为1m
+    if h <= target:    # 目标高度为1m
         z.append(h)
-        error = 1 - h    # 误差高度
+        error = target - h    # 误差高度
         extra = kp*error    # 误差后加水
         print("t="+str(t))
         print("h="+str(h))
